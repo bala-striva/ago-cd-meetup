@@ -1,0 +1,7 @@
+postgresql:
+  global:
+    postgresql:
+      auth:
+        username: gitea
+        password: gitea
+        database: gitea

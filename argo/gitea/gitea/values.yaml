@@ -1,0 +1,26 @@
+gitea:
+  gitea:
+    config:
+      database:
+        DB_TYPE: postgres
+        HOST: postgresql:5432
+        NAME: gitea
+        PASSWD: gitea
+        USER: gitea
+      cache:
+        ADAPTER: memcache
+        ENABLED: true
+        HOST: memcached:11211
+    admin:
+      username: "gitea"
+      password: "gitadmin"
+      email: "gi@tea.com"
+
+  memcached:
+    enabled: false
+  postgresql:
+    enabled: false
+  mysql:
+    enabled: false
+  mariadb:
+    enabled: false

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: gitea
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/bala-striva/argo-cd-meetup
+      revision: master
+      directories:
+      - path: argo/gitea/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bala-striva/argo-cd-meetup
+        targetRevision: master
+        path: '{{path}}'
+        helm:
+          valueFiles:
+          - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: gitea
+      syncPolicy:
+        automated:
+          selfHeal: true
