@@ -1,0 +1,3 @@
+librespeed:
+  env:
+    TZ: UTC
